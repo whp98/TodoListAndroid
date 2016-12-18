@@ -18,6 +18,8 @@
         <EditText
             android:id="@+id/task_title"
             android:hint="Tytuł zadania"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
@@ -25,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Notatka"
+            android:inputType="textCapSentences|textMultiLine"
             android:minLines="3"
             android:gravity="top" />
         <Button
