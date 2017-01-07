@@ -29,4 +29,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
 }

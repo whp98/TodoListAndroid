@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_task_create"
     android:layout_width="match_parent"
@@ -12,29 +11,50 @@
     tools:context="kamil.michalski.todolist.TaskCreateActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/task_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Tytuł zadania"
             android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:maxLines="1" />
+
         <EditText
             android:id="@+id/task_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="top"
             android:hint="Notatka"
             android:inputType="textCapSentences|textMultiLine"
-            android:minLines="3"
-            android:gravity="top" />
+            android:minLines="3" />
+
+        <CheckBox
+            android:id="@+id/task_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Czy przypomnieć?" />
+
+        <DatePicker
+            android:id="@+id/task_reminder_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <TimePicker
+            android:id="@+id/task_reminder_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
         <Button
             android:id="@+id/btn_save"
-            android:text="Zapisz"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Zapisz" />
 
     </LinearLayout>
 
