@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package kamil.michalski.todolist.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,9 +9,8 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
-/**
- * Created by ppg38 on 07.01.2017.
- */
+import kamil.michalski.todolist.model.TodoTask;
+
 
 public class TodoDbOpenHelper extends OrmLiteSqliteOpenHelper {
 

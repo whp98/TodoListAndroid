@@ -1,6 +1,7 @@
-package kamil.michalski.todolist;
+package kamil.michalski.todolist.Activity;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,6 +20,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
+import kamil.michalski.todolist.service.TodoNotificationService;
 
 public class TaskCreateActivity extends AppCompatActivity {
 
@@ -50,7 +57,7 @@ public class TaskCreateActivity extends AppCompatActivity {
 
             mTaskTitle.setText(mTask.getName());
             mTaskNote.setText(mTask.getNote());
-            if (mTask.isReminder()){
+            if (mTask.isReminder()) {
                 mTaskReminder.setChecked(true);
                 Calendar reminderCalendar = Calendar.getInstance();
                 reminderCalendar.setTime(mTask.getReminderDate());
@@ -61,10 +68,9 @@ public class TaskCreateActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     mTaskReminderTime.setHour(reminderCalendar.get(Calendar.HOUR_OF_DAY));
                     mTaskReminderTime.setMinute(reminderCalendar.get(Calendar.MINUTE));
-                }else
-                 {
-                     mTaskReminderTime.setCurrentHour(reminderCalendar.get(Calendar.HOUR_OF_DAY));
-                     mTaskReminderTime.setCurrentMinute(reminderCalendar.get(Calendar.MINUTE));
+                } else {
+                    mTaskReminderTime.setCurrentHour(reminderCalendar.get(Calendar.HOUR_OF_DAY));
+                    mTaskReminderTime.setCurrentMinute(reminderCalendar.get(Calendar.MINUTE));
                 }
             }
         }
@@ -109,7 +115,12 @@ public class TaskCreateActivity extends AppCompatActivity {
             reminderCalendar.setTimeInMillis(0);
             reminderCalendar.set(mTaskReminderDate.getYear(),
                     mTaskReminderDate.getMonth(),
-                    mTaskReminderDate.getDayOfMonth(),hour,minute);
+                    mTaskReminderDate.getDayOfMonth(), hour, minute);
+
+            if (reminderCalendar.before(Calendar.getInstance())) {
+                Toast.makeText(this, "wprowadzono przeszlą date", Toast.LENGTH_LONG).show();
+                return;
+            }
 
 
             task.setReminderDate(reminderCalendar.getTime());
@@ -119,6 +130,7 @@ public class TaskCreateActivity extends AppCompatActivity {
         } else {
             mTaskDatabase.updateTask(task, mPosition);
         }
+
         finish();
     }
 

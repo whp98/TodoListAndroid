@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package kamil.michalski.todolist.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.model.TodoTask;
 
 public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoViewHolder> {
     private List<TodoTask> mTask;

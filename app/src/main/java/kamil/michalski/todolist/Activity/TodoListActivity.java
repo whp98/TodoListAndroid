@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package kamil.michalski.todolist.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,12 +7,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kamil.michalski.todolist.NotificationsPlanner;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
+import kamil.michalski.todolist.Adapter.TodoTaskAdapter;
 
 public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdapter.OnClickListener {
     @BindView(R.id.task_list)
@@ -42,6 +47,7 @@ public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdap
     protected void onResume() {
         super.onResume();
         refreshListData();
+        new NotificationsPlanner(mTaskDatabase,this).planNotifications();
 
     }
 

@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package kamil.michalski.todolist.database;
 
 import android.content.Context;
 
@@ -9,7 +9,10 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+
+import kamil.michalski.todolist.model.TodoTask;
 
 /**
  * Created by ppg38 on 07.01.2017.
@@ -35,6 +38,19 @@ public class SqliteTaskDatabase implements ITaskDataBase {
             return mDao.queryBuilder()
                     .orderBy("done",true)
                     .orderBy("dateCreated",false)
+                    .query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<TodoTask> getFutureTasksWithReminder(Date now) {
+        try {
+            return mDao.queryBuilder()
+                    .where().eq("reminder",true)//zwracamy  gdzie przypomnienie jest prawdziwe
+                    .and().ge("reminderDate",now)//data jest wieksza niz data teraz
                     .query();
         } catch (SQLException e) {
             e.printStackTrace();
