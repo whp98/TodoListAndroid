@@ -12,10 +12,10 @@ public interface ITaskDataBase {
 
     void addTask(TodoTask task);
 
-    //pobieranie zadania wzgledem pozycji
     TodoTask getTask(int position);
 
-    //podmienianie  zadania po edycji
     void updateTask(TodoTask task, int position);
+
+    void deleteTask(TodoTask task, int position);
 
 }

@@ -85,4 +85,14 @@ public class SqliteTaskDatabase implements ITaskDataBase {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void deleteTask(TodoTask task, int position) {
+        try {
+            mDao.deleteById(position);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

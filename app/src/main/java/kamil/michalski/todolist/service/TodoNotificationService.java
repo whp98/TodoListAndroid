@@ -24,7 +24,6 @@ public class TodoNotificationService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        //nawiązanie polączenia z bazą danych
         mTaskDatabase = new SqliteTaskDatabase(this);
     }
 
@@ -34,7 +33,6 @@ public class TodoNotificationService extends IntentService {
         TodoTask task=mTaskDatabase.getTask(taskId);
 
         if (task==null){return;}
-        //jezeli tasknie istnieje to  nie robimy dalej nic
 
         Notification  notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)

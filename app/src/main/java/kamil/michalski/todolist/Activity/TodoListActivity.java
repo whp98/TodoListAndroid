@@ -1,8 +1,8 @@
 package kamil.michalski.todolist.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -12,14 +12,15 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import kamil.michalski.todolist.Adapter.TodoTaskAdapter;
 import kamil.michalski.todolist.NotificationsPlanner;
-import kamil.michalski.todolist.database.ITaskDataBase;
 import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.ITaskDataBase;
 import kamil.michalski.todolist.database.SqliteTaskDatabase;
 import kamil.michalski.todolist.model.TodoTask;
-import kamil.michalski.todolist.Adapter.TodoTaskAdapter;
 
-public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdapter.OnClickListener {
+public class TodoListActivity extends AppCompatActivity implements TodoTaskAdapter.OnClickListener {
     @BindView(R.id.task_list)
     RecyclerView mTodoList;
     private ITaskDataBase mTaskDatabase;
@@ -32,23 +33,20 @@ public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdap
         ButterKnife.bind(this);
         mTaskDatabase = new SqliteTaskDatabase(this);
 
-        //1.w jakim ukladzie maja wyswietlac sie elementy listy
-        //uklad pionowy - 1  element na wiersz
+
         mTodoList.setLayoutManager(new LinearLayoutManager(this));
 
 
         mAdapter = new TodoTaskAdapter(mTaskDatabase.getTasks(), this);
         mTodoList.setAdapter(mAdapter);
 
-        //mTodoList.setAdapter(listAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         refreshListData();
-        new NotificationsPlanner(mTaskDatabase,this).planNotifications();
-
+        new NotificationsPlanner(mTaskDatabase, this).planNotifications();
     }
 
     private void refreshListData() {
@@ -57,14 +55,14 @@ public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdap
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_todolist,menu);
+        getMenuInflater().inflate(R.menu.menu_todolist, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.menu_item_create){
-            Intent createTaskIntent = new Intent(this,TaskCreateActivity.class);
+        if (item.getItemId() == R.id.menu_item_create) {
+            Intent createTaskIntent = new Intent(this, TaskCreateActivity.class);
             startActivity(createTaskIntent);
             return true;
         }
@@ -73,20 +71,22 @@ public class TodoListActivity extends AppCompatActivity  implements TodoTaskAdap
 
     @Override
     public void onClick(TodoTask task, int position) {
-       // Toast.makeText(this,"Klik "+position, Toast.LENGTH_SHORT).show();
-        Intent createTaskIntent = new Intent(this,TaskCreateActivity.class);
-        createTaskIntent.putExtra("pos",position);
+        // Toast.makeText(this,"Klik "+position, Toast.LENGTH_SHORT).show();
+        Intent createTaskIntent = new Intent(this, TaskCreateActivity.class);
+        createTaskIntent.putExtra("pos", position);
         startActivity(createTaskIntent);
-        //intent  do otwarcia formularza edycji taska
+    }
+
+    @Override
+    public void onClickDelete(TodoTask task, int position) {
     }
 
     @Override
     public void onTaskDoneChanged(TodoTask task, int position, boolean isDone) {
-        //wyswietla aktualny status pola done
         //Toast.makeText(this,"Done "+position+" isDone: "+isDone,Toast.LENGTH_LONG).show();
         task.setDone(isDone);
         task.setDateCreated(new Date());
-        mTaskDatabase.updateTask(task,position);
+        mTaskDatabase.updateTask(task, position);
         refreshListData();
 
     }

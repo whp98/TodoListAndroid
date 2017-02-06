@@ -27,11 +27,7 @@ public class NotificationsPlanner {
     }
 
     public void planNotifications() {
-        //1. Pobrac powiadomienia które mają wlączone przypomnienia,
-        // ale tylko z czasem pozniejszym niz teraz
         List<TodoTask> tasks = mTaskDatabase.getFutureTasksWithReminder(new Date());
-        //2.  zaplanowac za pomoca alarmManagera uruchomienie uslugi
-        // TodoNotificationsService
         AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
         for (TodoTask task : tasks) {
             Intent serviceIntent = new Intent(mContext, TodoNotificationService.class);

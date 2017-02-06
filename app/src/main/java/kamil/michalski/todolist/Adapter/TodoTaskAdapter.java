@@ -30,34 +30,29 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
         notifyDataSetChanged();
     }
 
-    //funkcja zawsze wyglada podobnie
 
     @Override
     public TodoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //przeksztalca XML na obiekt klasy view
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View rowView = inflater.inflate(R.layout.list_item_todo, parent, false);
         return new TodoViewHolder(rowView);
 
     }
 
-    //ustawia liste na pozycji
+
     @Override
     public void onBindViewHolder(TodoViewHolder holder, int position) {
-        //pobranie elementu danyc na pozycji position
         TodoTask task = mTask.get(position);
-        //uzupelnienie widoku (holder) na podstawie pobranego obiektu
-        holder.mBlockListeners=true;//blokujemy wysylannia powiadomien o zmianie checkboxa  i kliknnieciu
+        holder.mBlockListeners=true;
         holder.mCurrentPosition = task.getId();
         holder.mCurrentTask = task;
         holder.mTitle.setText(task.getName());
         holder.mDone.setChecked(task.getDone());
-        holder.mBlockListeners=false;//odblokowujemy powiadomienia  zeby poprawnie reagowac na zdarzenia uzytkownika
+        holder.mBlockListeners=false;
 
 
     }
 
-    //ile elementow mam wyswietlic
     @Override
     public int getItemCount() {
         return mTask.size();
@@ -71,14 +66,14 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
 
         TodoTask mCurrentTask;
         int mCurrentPosition;
-        //true - poniewaz na poczatku kiedy powstaje wiersz i jest rzed przysaniem pierwszego zadaia
-        // nie chcemy zeby uruchamialy sie jakiekolwiek funkcje dotyczace zdarzen (np. onClick, on Checked)
         boolean mBlockListeners = true;
 
         public TodoViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
+
 
         @OnClick
         void onItemClick() {
@@ -87,7 +82,6 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
             }
         }
 
-        //sprawdza czy  checkbox zostal  zaznaczony
         @OnCheckedChanged(R.id.task_done)
         void onCheckedChange(boolean checked) {
             if (mClickListener != null && !mBlockListeners) {
@@ -99,7 +93,7 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
 
     public interface OnClickListener {
         void onClick(TodoTask task, int position);
-
+        void onClickDelete(TodoTask task,int position);
         void onTaskDoneChanged(TodoTask task, int position, boolean isDone);
     }
 }

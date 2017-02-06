@@ -24,7 +24,6 @@ import kamil.michalski.todolist.database.ITaskDataBase;
 import kamil.michalski.todolist.R;
 import kamil.michalski.todolist.database.SqliteTaskDatabase;
 import kamil.michalski.todolist.model.TodoTask;
-import kamil.michalski.todolist.service.TodoNotificationService;
 
 public class TaskCreateActivity extends AppCompatActivity {
 
@@ -49,8 +48,6 @@ public class TaskCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_create);
         ButterKnife.bind(this);
         mTaskDatabase = new SqliteTaskDatabase(this);
-        //sprawdzamy czy chcemy cos edytowac
-        //jezeli tak
         if (getIntent().hasExtra("pos")) {
             mPosition = getIntent().getIntExtra("pos", -1);
             mTask = mTaskDatabase.getTask(mPosition);
@@ -74,7 +71,6 @@ public class TaskCreateActivity extends AppCompatActivity {
                 }
             }
         }
-        //wywoluje strzalke
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -82,7 +78,6 @@ public class TaskCreateActivity extends AppCompatActivity {
 
     @OnCheckedChanged(R.id.task_reminder)
     void onRemiderChecked(boolean checked) {
-        //pokazuje date i czas w zaleznosci od zaznaczenia checkboxa
         mTaskReminderDate.setVisibility(checked ? View.VISIBLE : View.GONE);
         mTaskReminderTime.setVisibility(checked ? View.VISIBLE : View.GONE);
     }
@@ -90,16 +85,14 @@ public class TaskCreateActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.M)
     @OnClick(R.id.btn_save)
     void OnSaveClick() {
-        //jezeli  mTask jest rozny od null bierzemy wartosc po lewej w przeciwnym wypdaku po prawej, azeby nie stracic  informacji zapisanych wczesniej
+
         TodoTask task = mTask != null ? mTask : new TodoTask();
         task.setDateCreated(new Date());
         task.setName(mTaskTitle.getText().toString());
         task.setNote(mTaskNote.getText().toString());
         task.setReminder(mTaskReminder.isChecked());
         if (task.isReminder()) {
-            //funkcja  getHour weszla dopiero w API  23 (nasze minimalne to  19),
-            //istnieje ryzyko ze wystem  nie posada  tej funkcji,
-            //z dlatego  sprawdzamy i wywolujemy funkcje jaka mozna
+
 
 
             int hour = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ?
