@@ -6,6 +6,24 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="editTextColor">@color/actionMenuTextColor</item>
     </style>
-
+<!--    check选择是否完成-->
+    <style name="Check_isdone" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/check_box</item>
+    </style>
+<!--    回收-->
+    <style name="Check_button_rec" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/trash_button</item>
+    </style>
+<!--    删除-->
+    <style name="Check_button_del" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/button_delete</item>
+    </style>
+<!--    隐藏-->
+    <style name="Check_button_hid" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+    </style>
 </resources>

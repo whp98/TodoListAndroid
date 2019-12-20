@@ -19,7 +19,7 @@
             android:id="@+id/task_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tytuł zadania"
+            android:hint="@string/task_title"
             android:inputType="textCapSentences"
             android:maxLines="1" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:hint="Notatka"
+            android:hint="@string/task_note"
             android:inputType="textCapSentences|textMultiLine"
             android:minLines="3" />
 
@@ -36,7 +36,7 @@
             android:id="@+id/task_reminder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Czy przypomnieć?" />
+            android:text="@string/checkbox_time" />
 
         <DatePicker
             android:id="@+id/task_reminder_data"
@@ -54,7 +54,7 @@
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zapisz" />
+            android:text="@string/btn_save" />
 
     </LinearLayout>
 

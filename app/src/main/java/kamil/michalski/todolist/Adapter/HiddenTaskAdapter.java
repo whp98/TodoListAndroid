@@ -1,9 +1,15 @@
 package kamil.michalski.todolist.Adapter;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -16,15 +22,27 @@ import butterknife.OnClick;
 import kamil.michalski.todolist.R;
 import kamil.michalski.todolist.model.TodoTask;
 
-public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoViewHolder> {
+/**
+ *  用于已经隐藏页面的显示和监听器设置
+ *  点击某一个一个项目即可找回任务
+ */
+public class HiddenTaskAdapter extends RecyclerView.Adapter<HiddenTaskAdapter.Hidviewholder>{
     private List<TodoTask> mTask;
     private OnClickListener mClickListener;
-
-    public TodoTaskAdapter(List<TodoTask> mTask, OnClickListener mClickListener) {
+    public HiddenTaskAdapter(List<TodoTask> mTask, OnClickListener mClickListener) {
         this.mTask = mTask;
         this.mClickListener = mClickListener;
     }
 
+    @NonNull
+    @Override
+    public Hidviewholder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View rowView = inflater.inflate(R.layout.hidden_task_item, parent, false);
+        return new Hidviewholder(rowView);
+    }
+
+    //数据更新
     public void setmTask(List<TodoTask> mTask) {
         this.mTask = mTask;
         notifyDataSetChanged();
@@ -32,28 +50,14 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
 
 
     @Override
-    public TodoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View rowView = inflater.inflate(R.layout.list_item_todo, parent, false);
-        return new TodoViewHolder(rowView);
-
-    }
-
-
-    @Override
-    public void onBindViewHolder(TodoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Hidviewholder holder, int position) {
         TodoTask task = mTask.get(position);
         holder.mBlockListeners=true;
         holder.mCurrentPosition = task.getId();
         holder.mCurrentTask = task;
         holder.mTitle.setText(task.getName());
-        holder.mDone.setChecked(task.getDone());
-        if (task.getDone()){
-            holder.mHidden.setVisibility(View.VISIBLE);
-        }else {
-            holder.mHidden.setVisibility(View.INVISIBLE);
-        }
-        holder.mHidden.setChecked(task.isHiden());
+        holder.hidtask.setChecked(task.isHiden());
+        holder.delTask .setChecked(false);
         holder.mBlockListeners=false;
     }
 
@@ -62,18 +66,17 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
         return mTask.size();
     }
 
-    public class TodoViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.task_done)
-        CheckBox mDone;
-        @BindView(R.id.task_title)
+    class Hidviewholder extends RecyclerView.ViewHolder{
+        @BindView(R.id.hid_task_retrn)
+        CheckBox hidtask;
+        @BindView(R.id.hid_task_name)
         TextView mTitle;
-        @BindView(R.id.todoitem_hiddden)
-        CheckBox mHidden;
+        @BindView(R.id.hid_task_delete)
+        CheckBox delTask;
         TodoTask mCurrentTask;
         int mCurrentPosition;
         boolean mBlockListeners = true;
-
-        public TodoViewHolder(View itemView) {
+        public Hidviewholder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -87,25 +90,24 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoVi
             }
         }
 
-        @OnCheckedChanged(R.id.task_done)
+        @OnCheckedChanged(R.id.hid_task_retrn)
         void onCheckedChange(boolean checked) {
-            if (mClickListener != null && !mBlockListeners) {
-                mClickListener.onTaskDoneChanged(mCurrentTask, mCurrentPosition, checked);
-            }
-        }
-
-        @OnCheckedChanged(R.id.todoitem_hiddden)
-        void onCheckedChange1(boolean checked) {
             if (mClickListener != null && !mBlockListeners) {
                 mClickListener.onTaskHiddenChanged(mCurrentTask, mCurrentPosition, checked);
             }
         }
+
+        @OnCheckedChanged(R.id.hid_task_delete)
+        void onCheckedChange1(boolean checked) {
+            if (mClickListener != null && !mBlockListeners) {
+                mClickListener.onTaskDeleteChanged(mCurrentTask, mCurrentPosition, checked);
+            }
+        }
     }
-
-
+    //接口
     public interface OnClickListener {
         void onClick(TodoTask task, int position);
         void onTaskHiddenChanged(TodoTask task,int position,boolean isHidden);
-        void onTaskDoneChanged(TodoTask task, int position, boolean isDone);
+        void onTaskDeleteChanged(TodoTask task, int position, boolean isDone);
     }
 }

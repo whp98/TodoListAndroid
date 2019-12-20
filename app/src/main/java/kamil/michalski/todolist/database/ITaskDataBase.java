@@ -18,4 +18,5 @@ public interface ITaskDataBase {
 
     void deleteTask(TodoTask task, int position);
 
+    List<TodoTask> getTasksHid();
 }

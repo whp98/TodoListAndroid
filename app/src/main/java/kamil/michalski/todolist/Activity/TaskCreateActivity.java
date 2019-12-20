@@ -25,6 +25,10 @@ import kamil.michalski.todolist.R;
 import kamil.michalski.todolist.database.SqliteTaskDatabase;
 import kamil.michalski.todolist.model.TodoTask;
 
+/**
+ * 显示task页面
+ * 包含一个个的任务
+ */
 public class TaskCreateActivity extends AppCompatActivity {
 
     @BindView(R.id.task_title)
@@ -46,6 +50,7 @@ public class TaskCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_create);
+        setTitle(getString(R.string.newtask_act_title));
         ButterKnife.bind(this);
         mTaskDatabase = new SqliteTaskDatabase(this);
         if (getIntent().hasExtra("pos")) {
@@ -81,7 +86,6 @@ public class TaskCreateActivity extends AppCompatActivity {
         mTaskReminderDate.setVisibility(checked ? View.VISIBLE : View.GONE);
         mTaskReminderTime.setVisibility(checked ? View.VISIBLE : View.GONE);
     }
-
     @TargetApi(Build.VERSION_CODES.M)
     @OnClick(R.id.btn_save)
     void OnSaveClick() {
@@ -91,6 +95,7 @@ public class TaskCreateActivity extends AppCompatActivity {
         task.setName(mTaskTitle.getText().toString());
         task.setNote(mTaskNote.getText().toString());
         task.setReminder(mTaskReminder.isChecked());
+        task.setHiden(false);
         if (task.isReminder()) {
 
 

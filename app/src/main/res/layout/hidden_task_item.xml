@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <CheckBox
-        android:id="@+id/task_done"
-        android:layout_marginRight="8dp"
-        android:layout_gravity="center_vertical"
+        android:id="@+id/hid_task_retrn"
+        style="@style/Check_button_rec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Check_isdone"/>
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="8dp" />
 
     <TextView
-        android:id="@+id/task_title"
+        android:id="@+id/hid_task_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:textSize="24sp" />
-
+        android:textSize="24sp"/>
     <CheckBox
-        android:id="@+id/todoitem_hiddden"
-        style="@style/Check_button_hid"
+        android:id="@+id/hid_task_delete"
+        style="@style/Check_button_del"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="8dp"
-        android:visibility="invisible" />
-
+        android:layout_marginRight="8dp" />
 </LinearLayout>

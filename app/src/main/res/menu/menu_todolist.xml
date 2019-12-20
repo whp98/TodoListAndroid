@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/hidden_task"
+        android:title="@string/menu_done_task"
+        android:icon="@drawable/trashbin50px"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_item_create"
-        android:title="Dodaj"
-        android:icon="@android:drawable/ic_input_add"
-        app:showAsAction="always"
-        />
+        android:title="@string/nemu_add_task"
+        android:icon="@drawable/new_menu"
+        app:showAsAction="always" />
 </menu>

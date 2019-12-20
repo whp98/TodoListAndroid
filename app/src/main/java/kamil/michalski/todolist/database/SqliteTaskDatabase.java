@@ -32,12 +32,28 @@ public class SqliteTaskDatabase implements ITaskDataBase {
         }
     }
 
+    //不显示隐藏的项目
     @Override
     public List<TodoTask> getTasks() {
         try {
             return mDao.queryBuilder()
                     .orderBy("done",true)
                     .orderBy("dateCreated",false)
+                    .where().eq("hiden",false)
+                    .query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+    }
+        return Collections.emptyList();
+    }
+    //获取隐藏项目
+    @Override
+    public List<TodoTask> getTasksHid() {
+        try {
+            return mDao.queryBuilder()
+                    .orderBy("done",true)
+                    .orderBy("dateCreated",false)
+                    .where().eq("hiden",true)
                     .query();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,6 +73,8 @@ public class SqliteTaskDatabase implements ITaskDataBase {
         }
         return Collections.emptyList();
     }
+
+
 
     @Override
     public void addTask(TodoTask task) {

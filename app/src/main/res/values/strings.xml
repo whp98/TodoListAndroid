@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TodoList</string>
+    <string name="task_title">任务标题</string>
+    <string name="task_note">任务内容</string>
+    <string name="checkbox_time">设置时间</string>
+    <string name="btn_save">保存</string>
+    <string name="item_btn_hiden">隐藏</string>
+    <string name="nemu_add_task">新建Todo</string>
+    <string name="menu_done_task">已经完成的项目</string>
+    <string name="task_act_menu">任务</string>
+    <string name="newtask_act_title">新建任务</string>
+    <string name="Show_hiden_title">已经隐藏的任务</string>
 </resources>

@@ -35,7 +35,7 @@ public class TodoNotificationService extends IntentService {
         if (task==null){return;}
 
         Notification  notification = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setContentTitle(mTaskDatabase.getTask(taskId).getName())
                 .setContentText(mTaskDatabase.getTask(taskId).getNote())
                 .setDefaults(NotificationCompat.DEFAULT_ALL)

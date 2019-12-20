@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
-
+//任务实例类
 @DatabaseTable(tableName = "todo_task")
 public class TodoTask {
 
@@ -17,11 +17,19 @@ public class TodoTask {
     @DatabaseField(canBeNull = false)
     private boolean done;
     @DatabaseField(canBeNull = false)
+    private boolean hiden;
+    @DatabaseField(canBeNull = false)
     private Date dateCreated;
     @DatabaseField(canBeNull = false)
     private boolean reminder;
     @DatabaseField
     private Date reminderDate;
+
+    public void setHiden(boolean hiden){this.hiden = hiden;};
+
+    public boolean isHiden() {
+        return hiden;
+    }
 
     public boolean isReminder() {
         return reminder;
