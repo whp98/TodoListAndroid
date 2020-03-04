@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package com.hdu.todolist;
 
 import org.junit.Test;
 

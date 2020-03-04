@@ -8,5 +8,5 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="kamil.michalski.todolist.Activity.TodoListActivity">
+    tools:context="com.hdu.todolist.Activity.TodoListActivity">
 </android.support.v7.widget.RecyclerView>

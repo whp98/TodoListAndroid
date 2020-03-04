@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package com.hdu.todolist;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

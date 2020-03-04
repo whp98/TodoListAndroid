@@ -1,4 +1,4 @@
-package kamil.michalski.todolist.database;
+package com.hdu.todolist.database;
 
 import android.content.Context;
 
@@ -12,10 +12,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import kamil.michalski.todolist.model.TodoTask;
+import com.hdu.todolist.model.TodoTask;
 
 /**
- * Created by ppg38 on 07.01.2017.
+ * 数据库操作
  */
 
 public class SqliteTaskDatabase implements ITaskDataBase {
@@ -65,8 +65,8 @@ public class SqliteTaskDatabase implements ITaskDataBase {
     public List<TodoTask> getFutureTasksWithReminder(Date now) {
         try {
             return mDao.queryBuilder()
-                    .where().eq("reminder",true)//zwracamy  gdzie przypomnienie jest prawdziwe
-                    .and().ge("reminderDate",now)//data jest wieksza niz data teraz
+                    .where().eq("reminder",true)//找到时间任务
+                    .and().ge("reminderDate",now)
                     .query();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,15 +1,10 @@
-package kamil.michalski.todolist.Adapter;
+package com.hdu.todolist.Adapter;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -19,8 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import kamil.michalski.todolist.R;
-import kamil.michalski.todolist.model.TodoTask;
+import com.hdu.todolist.R;
+import com.hdu.todolist.model.TodoTask;
 
 /**
  *  用于已经隐藏页面的显示和监听器设置

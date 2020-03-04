@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kamil.michalski.todolist">
+    package="com.hdu.todolist">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -10,18 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ShowHiddenTaskActivity"></activity>
-        <activity android:name=".Activity.TodoListActivity">
+        <activity android:name="com.hdu.todolist.Activity.ShowHiddenTaskActivity"></activity>
+        <activity android:name="com.hdu.todolist.Activity.TodoListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.TaskCreateActivity" />
+        <activity android:name="com.hdu.todolist.Activity.TaskCreateActivity" />
 
         <service
-            android:name=".service.TodoNotificationService"
+            android:name="com.hdu.todolist.service.TodoNotificationService"
             android:exported="false" />
     </application>
 

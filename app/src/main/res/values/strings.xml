@@ -10,4 +10,5 @@
     <string name="task_act_menu">任务</string>
     <string name="newtask_act_title">新建任务</string>
     <string name="Show_hiden_title">已经隐藏的任务</string>
+    <string name="create_time_passed">请输入未来的时间</string>
 </resources>

@@ -1,4 +1,4 @@
-package kamil.michalski.todolist;
+package com.hdu.todolist;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,12 +9,12 @@ import android.os.Build;
 import java.util.Date;
 import java.util.List;
 
-import kamil.michalski.todolist.database.ITaskDataBase;
-import kamil.michalski.todolist.model.TodoTask;
-import kamil.michalski.todolist.service.TodoNotificationService;
+import com.hdu.todolist.database.ITaskDataBase;
+import com.hdu.todolist.model.TodoTask;
+import com.hdu.todolist.service.TodoNotificationService;
 
 /**
- * Created by ppg38 on 08.01.2017.
+ *
  */
 
 public class NotificationsPlanner {

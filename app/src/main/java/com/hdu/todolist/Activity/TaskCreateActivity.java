@@ -1,7 +1,6 @@
-package kamil.michalski.todolist.Activity;
+package com.hdu.todolist.Activity;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +19,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import kamil.michalski.todolist.database.ITaskDataBase;
-import kamil.michalski.todolist.R;
-import kamil.michalski.todolist.database.SqliteTaskDatabase;
-import kamil.michalski.todolist.model.TodoTask;
+import com.hdu.todolist.database.ITaskDataBase;
+import com.hdu.todolist.R;
+import com.hdu.todolist.database.SqliteTaskDatabase;
+import com.hdu.todolist.model.TodoTask;
 
 /**
  * 显示task页面
@@ -116,7 +115,7 @@ public class TaskCreateActivity extends AppCompatActivity {
                     mTaskReminderDate.getDayOfMonth(), hour, minute);
 
             if (reminderCalendar.before(Calendar.getInstance())) {
-                Toast.makeText(this, "wprowadzono przeszlą date", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.create_time_passed), Toast.LENGTH_LONG).show();
                 return;
             }
 
