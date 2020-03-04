@@ -1,9 +1,9 @@
-package com.hdu.todolist.database;
+package kamil.michalski.todolist.database;
 
 import java.util.Date;
 import java.util.List;
 
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.model.TodoTask;
 
 public interface ITaskDataBase {
     List<TodoTask> getTasks();

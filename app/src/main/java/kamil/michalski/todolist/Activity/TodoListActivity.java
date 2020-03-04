@@ -1,4 +1,4 @@
-package com.hdu.todolist.Activity;
+package kamil.michalski.todolist.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +12,14 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kamil.michalski.todolist.Adapter.TodoTaskAdapter;
 
-import com.hdu.todolist.Adapter.TodoTaskAdapter;
-import com.hdu.todolist.NotificationsPlanner;
-import com.hdu.todolist.R;
-import com.hdu.todolist.database.ITaskDataBase;
-import com.hdu.todolist.database.SqliteTaskDatabase;
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.NotificationsPlanner;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
+
 /**
  *  添加任务页面
  */

@@ -1,4 +1,4 @@
-package com.hdu.todolist.database;
+package kamil.michalski.todolist.database;
 
 import android.content.Context;
 
@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.model.TodoTask;
 
 /**
  * 数据库操作

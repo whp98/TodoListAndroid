@@ -1,4 +1,4 @@
-package com.hdu.todolist.Activity;
+package kamil.michalski.todolist.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +10,12 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.hdu.todolist.Adapter.HiddenTaskAdapter;
-import com.hdu.todolist.NotificationsPlanner;
-import com.hdu.todolist.R;
-import com.hdu.todolist.database.ITaskDataBase;
-import com.hdu.todolist.database.SqliteTaskDatabase;
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.Adapter.HiddenTaskAdapter;
+import kamil.michalski.todolist.NotificationsPlanner;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
 
 /**
  * 展示和提示找回已经完成的任务,当用户点击任务的时候，提示并且将被点击的任务修改为没有隐藏的状态

@@ -1,4 +1,4 @@
-package com.hdu.todolist.database;
+package kamil.michalski.todolist.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,7 +9,7 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.model.TodoTask;
 
 
 public class TodoDbOpenHelper extends OrmLiteSqliteOpenHelper {
@@ -24,7 +24,7 @@ public class TodoDbOpenHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource,TodoTask.class);
+            TableUtils.createTable(connectionSource, TodoTask.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

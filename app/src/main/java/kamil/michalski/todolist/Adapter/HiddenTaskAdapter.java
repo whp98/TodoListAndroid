@@ -1,4 +1,4 @@
-package com.hdu.todolist.Adapter;
+package kamil.michalski.todolist.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import com.hdu.todolist.R;
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.model.TodoTask;
 
 /**
  *  用于已经隐藏页面的显示和监听器设置

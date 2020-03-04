@@ -1,4 +1,4 @@
-package com.hdu.todolist.model;
+package kamil.michalski.todolist.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

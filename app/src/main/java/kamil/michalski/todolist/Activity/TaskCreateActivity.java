@@ -1,4 +1,4 @@
-package com.hdu.todolist.Activity;
+package kamil.michalski.todolist.Activity;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -19,10 +19,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import com.hdu.todolist.database.ITaskDataBase;
-import com.hdu.todolist.R;
-import com.hdu.todolist.database.SqliteTaskDatabase;
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
 
 /**
  * 显示task页面

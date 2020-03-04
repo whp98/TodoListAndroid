@@ -1,4 +1,4 @@
-package com.hdu.todolist.service;
+package kamil.michalski.todolist.service;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -7,10 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import com.hdu.todolist.R;
-import com.hdu.todolist.database.ITaskDataBase;
-import com.hdu.todolist.database.SqliteTaskDatabase;
-import com.hdu.todolist.model.TodoTask;
+import kamil.michalski.todolist.R;
+import kamil.michalski.todolist.database.ITaskDataBase;
+import kamil.michalski.todolist.database.SqliteTaskDatabase;
+import kamil.michalski.todolist.model.TodoTask;
 
 
 public class TodoNotificationService extends IntentService {
